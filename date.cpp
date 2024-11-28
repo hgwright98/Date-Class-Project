@@ -1,14 +1,12 @@
-
 #include "date.h"
 #include <iostream>
-#include <stdexcept>
 #include <iomanip>
-#include <array>
+
 
 using namespace std;
 
 // This initialize the static array of days in each month
-const array<int, 12> Date::daysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+const int Date::daysInMonth[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 // This is the default constructor that sets the date to January 1, 1930
 Date::Date() : month(1), day(1), year(1930) {}
@@ -67,18 +65,20 @@ void Date::printNumeric() const {
 
 // This prints the date in "Month Day, Year" format
 void Date::printLong() const {
-    static const array<string, 12> monthNames = {
+    static const char* monthNames[] = {
         "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"};
+        "July", "August", "September", "October", "November", "December"
+    };
     
     cout << monthNames[month - 1] << " " << day << ", " << year << endl;
 }
 
 // This prints the date in "Day Month Year" format
 void Date::printDayMonthYear() const {
-    static const array<string, 12> monthNames = {
+    static const char* monthNames[] = {
         "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"};
+        "July", "August", "September", "October", "November", "December"
+    };
     
     cout << day << " " << monthNames[month - 1] << " " << year << endl;
 }
@@ -131,7 +131,7 @@ Date Date::operator--(int) {
 
 // This is an overload stream insertion operator for <<
 ostream& operator<<(ostream& os, const Date& date) {
-    static const array<string, 12> monthNames = {
+    static const char* monthNames[] = {
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"};
 

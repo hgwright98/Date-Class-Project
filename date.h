@@ -11,7 +11,7 @@ private:
     int month, day, year;
 
     // This is an array for the number of days in each month
-    static const array<int, 12> daysInMonth;
+    static const int daysInMonth[12];
 
     // This is a function(helper) to check if a given year is a leap year
     bool isLeapYear(int year) const;
